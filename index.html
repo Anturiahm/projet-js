@@ -1,55 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS</title>
+    <style>
+        .abled {
+            display: block;
+            color: red;
+        }
+
+        .disabled {
+            display: none;
+        }
+    </style>
+    </style>
 </head>
+
 <body>
-    <h1>Mes premiers pas avec JS !</h1>
 
-    <h2>Test2</h2>
+    <form>
 
+        <section id="nameAge">
+            <label for="name">Entrez votre nom :</label>
+            <input type="text" name="name" placeholder="Nom">
+            <label for="age">Entrez votre âge :</label>
+            <input type="number" name="age" placeholder="Âge">
+            <input type="button">
+        </section>
 
+        <section id="choice">
+            <label for="choice1"></label>
+            <input type="number" name="nb1" placeholder="chiffre 1">
+            <label for="choice2"></label>
+            <input type="number" name="nb2" placeholder="chiffre 2">
+            <input type="button">
+        </section>
 
+        <section id="guess">
+            <label for="userGuess">
+                Merci de saisir une valeur entre 0 et 10 :
+            </label>
+            <input type="number" min="0" max="10" value="8" id="userGuess" name="userGuess" />
+            <br />
+            <input type="submit" value="Tenter !" />
+        </section>
 
+    </form>
 
+    <script src="secret.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        let nom=prompt("Quel est ton nom ?");
-        let age=prompt("Quel est ton age ?");
-        console.log("Bonjour " + nom + ", tu as " + age + " ans !");
-        console.log(`Bonjour ${nom}, tu as ${age} ans !`);
-        
-
-
-
-
-    </script>
 </body>
+
 </html>

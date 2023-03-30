@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes premiers pas avec JS</title>
+</head>
+<body>
+
+    <h1>Mes premiers pas avec JS !</h1>
+
+    <h2>Test2</h2>
+    
+<script>
+
+
+function premier_cas()
+{
+    let nom = prompt("Quel est ton nom ?");
+    let age = prompt("Quel est ton age ?");
+
+    /* ES6 */
+    console.log(`Bonjour ${nom}, tu as ${age} ans !`);
+    /* ES5 */
+    console.log("Bonjour " + nom + ", tu as " + age + " ans !");
+}
+
+function deuxieme_cas()
+{
+    let age = prompt("Quel est ton Age ?");
+
+    if (age<18) {
+        alert("Cette application est interdite au mineur");
+    } else {
+        console.debug("Welcomeeeeeeee, viens prendre du coco !");
+    }
+}
+
+function is_age_valid(user_age)
+{
+    const LOWER_AGE_LIMIT = 0;
+    const UPPER_AGE_LIMIT = 130;
+
+    user_age = Number.parseInt(user_age, 10);
+    if (!isNaN(user_age)) {
+        if (user_age >= LOWER_AGE_LIMIT && user_age <= UPPER_AGE_LIMIT) {
+            return true;
+        } else {
+            console.debug("Âge fourni en dehors des limites");
+        }
+    } else {    
+        console.error('Il est pas capable de donner correctement son âge');
+    }
+    return false;
+}
+
+function troisieme_cas()
+{
+    const LEGAL_AGE = 18;
+    let nom = prompt("Quel est ton nom ?");
+    let age;
+    do {
+        age = prompt("Quel est ton age ?");
+        console.debug(" age : " + age + " (" + typeof(age) + ")");
+    } while (!is_user_of_age(age));
+    
+    if (age < LEGAL_AGE) {
+            alert('Tu es trop jeune pour utiliser cette application !');
+        } else {
+            console.log(`Bonjour ${nom}, tu as ${age} ans !`);
+            console.debug("Tu es le bienvenu mon ami, mets-toi à l'(aise et prends une bière ;-)");
+        }
+}
+
+troisieme_cas();
+
+
+</script>
+
+
+</body>
+</html>
