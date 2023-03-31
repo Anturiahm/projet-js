@@ -6,17 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS</title>
-    <style>
-        .abled {
-            display: block;
-            color: red;
-        }
-
-        .disabled {
-            display: none;
-        }
-    </style>
-    </style>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="secret.js"></script>
 </head>
 
 <body>
@@ -25,21 +16,21 @@
 
         <section id="nameAge">
             <label for="name">Entrez votre nom :</label>
-            <input type="text" name="name" placeholder="Nom">
+            <input type="text" name="name" placeholder="Nom"/>
             <label for="age">Entrez votre âge :</label>
-            <input type="number" name="age" placeholder="Âge">
-            <input type="button">
+            <input type="number" name="age" placeholder="Âge" id="age"/>
+            <input type="button" id="btnSectionAge" value="Continuer" />
         </section>
 
-        <section id="choice">
+        <section id="choice" class="disabled">
             <label for="choice1"></label>
-            <input type="number" name="nb1" placeholder="chiffre 1">
+            <input type="number" name="nb1" placeholder="chiffre 1"/>
             <label for="choice2"></label>
-            <input type="number" name="nb2" placeholder="chiffre 2">
+            <input type="number" name="nb2" placeholder="chiffre 2"/>
             <input type="button">
         </section>
 
-        <section id="guess">
+        <section id="guess" class="disabled">
             <label for="userGuess">
                 Merci de saisir une valeur entre 0 et 10 :
             </label>
@@ -49,8 +40,6 @@
         </section>
 
     </form>
-
-    <script src="secret.js"></script>
 
 </body>
 

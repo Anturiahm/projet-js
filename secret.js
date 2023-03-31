@@ -77,25 +77,25 @@ function nombre_mystère()
     return;
 }
 
-nombre_mystère();
+//nombre_mystère();
 
 
-console.log(
-    document.querySelector('#userGuess')
-);
 
-document.querySelector('#userGuess').setAttribute('min', 5);
+function getUserAge()
+{
+    const USER_AGE = document.querySelector('#age').value;
+    console.log("Age saisi par l'utilisateur : " + USER_AGE);
+    if (USER_AGE >= 18) {
+        document.querySelector("#nameAge").classList.add("disabled");
+        document.querySelector("#choice").classList.remove("disabled");
+    } else {
+        console.log("L'utilisateur n'a pas l'âge requis");
+    }
+}
 
-       // Version "débutant"
-       let elt = document.querySelector('#guess');
-       elt.classList.add("disabled");
+function declareListeners()
+{
+    document.querySelector('#btnSectionAge').addEventListener('click', getUserAge);
+}
 
-       // Raccourci
-       // /!\ peutplanter si pas d'élément avec l'id "name_age" sur la page
-       document.querySelector('#name_age').classList.add("abled");
-
-       // Version durcie
-       elt = document.querySelector('#choice');
-       if (elt != null) {
-           elt.classList.add("disabled");
-       }
+window.addEventListener('load', declareListeners);
