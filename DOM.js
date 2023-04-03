@@ -1,87 +1,160 @@
-FONCTION getGamesList()
-DÉBUT
+function getGamesList()
+{
+    let apex = {
+            name: "Apex Legends",
+            gender: "FPS",
+            date: "2019",
+            platforms: [
+                {
+                    name: "PC",
+                    editor: "Microsoft",
+                },
+                {
+                    name: "PS4",
+                    editor: "Sony",
+                },
+                {
+                    name: "PS5",
+                    editor: "Sony",
+                },
+            ],
+        };
+        let overwatch = {
+            name: "Overwatch",
+            gender: "FPS Coop",
+            date: "2015",
+            platforms: [
+                {
+                    name: "PC",
+                    editor: "Microsoft",
+                },
+                {
+                    name: "PS4",
+                    editor: "Sony",
+                },
+                {
+                    name: "PS5",
+                    editor: "Sony",
+                },
+            ],
+        };
+        let lol = {
+            name: "League Of Legends",
+            gender: "MOBA",
+            date: "2009",
+            platforms: [
+                {
+                    name: "PC",
+                    editor: "Microsoft",
+                },
+            ],
+        };
 
-    Retourner [
-        ["Football Manager 2022", "Sport", 2022, "PC"],
-        ["Resident Evil 4 Remastered", "TPS", 2023],
-        ["Snake", "Puzzle", 1997, "3310"]
-    ]
+    return [
+        apex,
+        overwatch,
+        lol
+    ];
 
-FIN
+}
 
-FONCTION generateHeader(headers)
-DÉBUT
-    Déclarer elt_thead <- "créer un élément thead"
-    Déclarer elt_tr <- "créer un élément tr"
+function generateHeader(headers)
+{
+    let elt_thead = document.createElement("thead");
+    let elt_tr = document.createElement("tr");
 
-    Déclarer i <- 0
-    TANT QUE i < headers.length  FAIRE
-        Déclarer elt_th <- "créer un élément th"
-        elt_th.innerHTML <- headers[i]
-        Rattacher elt_th à elt_tr
-        i <- i+1
-    FINTANTQUE
+    let i = 0;
+    while (i < headers.length) {
+        let elt_th = document.createElement("th");
+        elt_th.innerHTML = headers[i];
+        elt_tr.appendChild(elt_th);
+        i = i+1;
+    }
 
-    Rattacher elt_tr à elt_thead
-    Retourner elt_thead
-FIN
+    elt_thead.appendChild(elt_tr);
+    return elt_thead;
+}
 
-FONCTION formatGame(SingleGame)
-DÉBUT
-    Déclarer elt_tr <- "créer un élément tr"
+function formatPlatforms(platforms)
+{
+    let ul = document.createElement("ul");
+    let i = 0;
+    while (i < platforms.length) {
+        let li = document.createElement("li");
+        li.innerHTML = platforms[i].name;
+        li.class= platforms[i].;
+        ul.appendChild(li);
+        i++;
+    }
+    return ul;
+}
 
-    Déclarer i <- 0
-    TANT QUE i < SingleGame.length  FAIRE
-        Déclarer elt_td <- "créer un élément td"
-        elt_td.innerHTML <- SingleGame[i]
-        Rattacher elt_td à elt_tr
+function formatGame(singleGame)
+{
+    let elt_tr = document.createElement("tr");
+    
+    let elt_td_name = document.createElement("td");
+    elt_td_name.innerHTML = singleGame.name;
+    elt_tr.appendChild(elt_td_name);
+    let elt_td_gender = document.createElement("td");
+    elt_td_gender.innerHTML = singleGame.gender;
+    elt_tr.appendChild(elt_td_gender);
+    let elt_td_date = document.createElement("td");
+    elt_td_date.innerHTML = singleGame.date;
+    elt_tr.appendChild(elt_td_date);
+    let elt_td_platforms = document.createElement("td");
+    elt_td_platforms.appendChild(formatPlatforms(singleGame.platforms));
+    elt_tr.appendChild(elt_td_platforms);
 
-        i <- i+1
-    FINTANTQUE
+    return elt_tr;
+}
 
-    Retourner elt_tr
-FIN
+function generateHTMLTRList(JSTable)
+{
+    let elt_tbody = document.createElement("tbody");
 
-FONCTION generateHTMLTRList(JSTable)
-DÉBUT
-    Déclarer elt_tbody <- "créer un élément tbody"
+    let i = 0;
+    while (i < JSTable.length) {
+        let elt_tr = formatGame(JSTable[i]);
+        elt_tbody.appendChild(elt_tr);
+        i = i+1;
+    }
 
-    Déclarer i <- 0
-    TANT QUE i < JSTable.length  FAIRE
-        Déclarer elt_tr <- formatGame(JSTable[i])
-        Rattacher elt_tr à elt_tbody
-        i <- i+1
-    FINTANTQUE
+    return elt_tbody;
+}
 
-    Retourner elt_body
-FIN
+function generateHTMLTableFromJSArray(JSTable)
+{
+    let HTMLTable = document.createElement("table");
+    let headers = [ "Titre", "Genre", "AnnÃ©e", "Plateforme"];
+    let tableheader = generateHeader(headers);
+    HTMLTable.appendChild(tableheader);
+    let tablebody = generateHTMLTRList(JSTable);
+    HTMLTable.appendChild(tablebody);
+    return HTMLTable;
 
-FONCTION generateHTMLTableFromJSArray(JSTable)
-DÉBUT
-    Déclarer HTMLTable <- "créer un élément table"
-    Déclarer headers <- [ "Titre", "Genre", "Année", "Plateforme"]
-    Déclarer tableheader <- generateHeader(headers)
-    Rattacher tableheader à HTMLTable
-    Déclarer tablebody <- generateHTMLTRList(JSTable)
-    Rattacher tablebody à HTMLTable
-    Retourne HTMLTable
+}
 
-FIN
+function attachHTMLGamesArrayToContainer( container, element)
+{
+    document.querySelector(container).appendChild(element);
+}
 
-PROGRAMME buildHTMLTable
-DÉBUT
-    Déclarer games <- getGamesList()
+function buildHTMLTable()
+{
+    let games = getGamesList();
+    console.log("Jeux:");
     console.log(games);
 
-    Déclarer games_html <- generateHTMLTableFromJSArray(games)
+    let games_html = generateHTMLTableFromJSArray(games);
+    console.log("Jeux en HTML:");
     console.log(games_html);
 
-    /*
-    Déclarer parent <- "tabjeux"
+    
+    let parent = "#games";
     attachHTMLGamesArrayToContainer(parent, games_html)
-    */
+    
 
-FIN
+}
 
-
-
+buildHTMLTable();

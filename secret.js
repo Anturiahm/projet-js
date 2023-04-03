@@ -93,9 +93,25 @@ function getUserAge()
     }
 }
 
+function mask2()
+{
+  document.querySelector("#choice").classList.add("disabled");
+  document.querySelector("#guess").classList.remove("disabled");
+  choisir_aléatoirement_un_nombre();
+  let zero = document.querySelector("#choice input[name='nb1']").value;
+  let dix = document.querySelector("#choice input[name='nb2']").value;
+  console.log(zero);
+  console.log(dix);
+  document.querySelector("#zero").innerHTML = zero; 
+  document.querySelector("#dix").innerHTML = dix; 
+}
+
+
 function declareListeners()
 {
     document.querySelector('#btnSectionAge').addEventListener('click', getUserAge);
+    document.querySelector('#btnSectionChoice').addEventListener('click', mask2);
 }
 
 window.addEventListener('load', declareListeners);
+

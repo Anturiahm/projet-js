@@ -22,17 +22,17 @@
             <input type="button" id="btnSectionAge" value="Continuer" />
         </section>
 
-        <section id="choice" class="disabled">
+        <section id="choice">
             <label for="choice1"></label>
             <input type="number" name="nb1" placeholder="chiffre 1"/>
             <label for="choice2"></label>
             <input type="number" name="nb2" placeholder="chiffre 2"/>
-            <input type="button">
+            <input type="button"  id="btnSectionChoice" value="Continuer">
         </section>
 
         <section id="guess" class="disabled">
             <label for="userGuess">
-                Merci de saisir une valeur entre 0 et 10 :
+                Merci de saisir une valeur entre <span id="zero">0</span> et <span id="dix">10</span> :
             </label>
             <input type="number" min="0" max="10" value="8" id="userGuess" name="userGuess" />
             <br />
